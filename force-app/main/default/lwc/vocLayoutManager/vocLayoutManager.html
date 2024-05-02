@@ -1,0 +1,17 @@
+<template>
+    <lightning-layout multiple-rows>
+        <!-- 검색인풋 -->
+        <!-- <lightning-layout-item size="12" class="slds-var-p-around_small">
+            <c-voc-search input-type="number"></c-voc-search>
+        </lightning-layout-item> -->
+
+        <!-- voc테이블과 voc상세를 가로로 배치 -->
+        <lightning-layout-item class="slds-var-p-horizontal_small" padding="around-small" size="8" small-device-size="12" medium-device-size="8">
+            <c-voc-table></c-voc-table>
+        </lightning-layout-item>
+        
+        <lightning-layout-item class="slds-var-p-horizontal_small" padding="around-small" size="4" small-device-size="12" medium-device-size="4">
+            <c-voc-detail></c-voc-detail>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

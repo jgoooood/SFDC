@@ -1,0 +1,21 @@
+<!-- pagination.html -->
+<template>
+    <lightning-layout>
+        <lightning-layout-item class="slds-align_absolute-center">
+
+            <!-- 이전버튼 -->
+            <lightning-button class="btnPadding" icon-name="utility:chevronleft" label="이전" onclick={handlePrev} disabled={isPrevDisabled}>
+            </lightning-button>
+            
+            <!-- 페이지 번호 버튼 -->
+            <template for:each={pageNumbers} for:item="page">
+                <lightning-button class="btnPadding" key={page.number} label={page.number} variant={page.variant} onclick={handlePageSelect} data-page={page.number}>
+                </lightning-button>
+            </template>
+            
+            <!-- 다음버튼 -->
+            <lightning-button class="btnPadding" icon-name="utility:chevronright" label="다음" onclick={handleNext} disabled={isNextDisabled}>
+            </lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

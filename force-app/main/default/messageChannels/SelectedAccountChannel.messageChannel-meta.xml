@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lightning Message Channel for Selected Account.</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>This is the record Id for the selected Account.</description>
+        <fieldName>accountId</fieldName>
+    </lightningMessageFields>
+    <masterLabel>SelectedAccountChannel</masterLabel>
+</LightningMessageChannel>

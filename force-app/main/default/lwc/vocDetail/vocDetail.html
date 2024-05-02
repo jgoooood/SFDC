@@ -1,0 +1,116 @@
+<template>
+    <lightning-card title="VoC 세부내역">
+        <template if:true={showButton}>
+            <template if:true={viewMode}>
+                <template if:true={recordId}>
+                    <lightning-button slot="actions" label="수정" variant="brand" onclick={modifyDetail} style="padding: 10px;"></lightning-button>
+                    <lightning-button slot="actions" label="삭제" variant="destructive" record-id={recordId} onclick={deleteVoc}></lightning-button>
+                </template>
+            </template>
+        </template>
+
+        <template if:true={modifyMode}>
+            <!-- vocInputForm 재사용 -->
+            <c-voc-input-form 
+                onsavesuccess={handleSaveSuccess} 
+                onpublish={publishHandler} 
+                onviewdetail={viewHandler}
+                oncancel={viewHandler} 
+                record-id={recordId}>
+            </c-voc-input-form>
+            <!-- <c-voc-input-form onpublish={publishHandler} onviewdetail={viewHandler} record-id={recordId}></c-voc-input-form> -->
+        </template>
+        
+        <div class="slds-var-p-around_medium">
+            <template if:true={viewMode}>
+                <template if:true={recordId}>
+                    <lightning-record-view-form record-id={recordId} object-api-name="VoC__c">
+                        <lightning-output-field field-name="ContactId__c"></lightning-output-field>
+                        <lightning-output-field field-name="VoC_Product_Name__c"></lightning-output-field>
+                        <lightning-output-field field-name="VoC_Contact_Phone__c"></lightning-output-field>
+                        <lightning-output-field field-name="VoC_Type__c"></lightning-output-field>
+                        <lightning-output-field field-name="VoC_Status__c"></lightning-output-field>
+                        <lightning-output-field field-name="VoC_Subject__c"></lightning-output-field>
+                        <lightning-output-field field-name="VoC_Description__c"></lightning-output-field>
+                        <lightning-output-field field-name="VoC_Start_Date__c"></lightning-output-field>
+                        <lightning-output-field field-name="VoC_End_Date__c"></lightning-output-field>
+                    </lightning-record-view-form>
+                </template>
+            </template>
+            
+            <div if:false={recordId} class="slds-text-align_center">
+                <b>조회할 VoC를 선택해 주세요.</b>
+            </div>
+        </div>
+    </lightning-card>
+</template>
+
+
+<!-- <template>
+    <lightning-card title="VoC 세부내역">
+        <div class="slds-var-p-around_medium">
+            <template if:true={recordId}>
+                <lightning-record-edit-form record-id={recordId} object-api-name="VoC__c">
+                    <lightning-input-field field-name="ContactId__c"></lightning-input-field>
+                    <lightning-input-field field-name="VoC_Product_Name__c"></lightning-input-field>
+                    <lightning-input-field field-name="VoC_Contact_Phone__c"></lightning-input-field>
+                    <lightning-input-field field-name="VoC_Type__c"></lightning-input-field>
+                    <lightning-input-field field-name="VoC_Status__c"></lightning-input-field>
+                    <lightning-input-field field-name="VoC_Description__c"></lightning-input-field>
+                    <lightning-input-field field-name="VoC_Start_Date__c"></lightning-input-field>
+                    <lightning-input-field field-name="VoC_End_Date__c"></lightning-input-field>
+                </lightning-record-edit-form>
+            </template>
+            
+            <template if:false={recordId}>
+                <p>조회할 VoC 내역을 선택해 주세요.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template> -->
+
+
+
+<!-- <template>
+    <lightning-card title="VoC 세부내역">
+        <div class="slds-var-p-around_medium">
+            <template if:true={recordId}>
+                <lightning-record-edit-form record-id={recordId} object-api-name="VoC__c">
+                    <lightning-output-field field-name="ContactId__c"></lightning-output-field>
+                    <lightning-output-field field-name="VoC_Product_Name__c"></lightning-output-field>
+                    <lightning-output-field field-name="VoC_Contact_Phone__c"></lightning-output-field>
+                    <lightning-output-field field-name="VoC_Type__c"></lightning-output-field>
+                    <lightning-output-field field-name="VoC_Status__c"></lightning-output-field>
+                    <lightning-output-field field-name="VoC_Description__c"></lightning-output-field>
+                    <lightning-output-field field-name="VoC_Start_Date__c"></lightning-output-field>
+                    <lightning-output-field field-name="VoC_End_Date__c"></lightning-output-field>
+                </lightning-record-edit-form>
+            </template>
+            
+            <template if:false={recordId}>
+                <p>조회할 VoC 내역을 선택해 주세요.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template> -->
+
+
+<!-- <template>
+    <lightning-card title="VoC 세부내역">
+        <div class="slds-var-p-around_medium">
+            <template if:true={recordId}>
+                <lightning-record-form
+                    record-id={recordId}
+                    object-api-name='VoC__c'
+                    layout-type="Full"
+                    columns="2"
+                    mode="view"
+                    fields={fields}>
+                </lightning-record-form>
+            </template>
+            <template if:false={recordId}>
+                <p>조회할 VoC 내역을 선택해 주세요.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template> -->

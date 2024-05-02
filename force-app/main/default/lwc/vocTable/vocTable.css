@@ -1,0 +1,56 @@
+.slds-table {
+    width: 100%; 
+    table-layout: fixed; 
+}
+
+.b-group-table th:nth-child(1) {
+    width: 7%; 
+}
+
+.b-group-table th:nth-child(2) {
+    width: 7%; 
+}
+
+.b-group-table th:nth-child(3) {
+    width: 10%;
+}
+.b-group-table th:nth-child(4) {
+    width: 16%; 
+}
+
+.b-group-table th:nth-child(5) {
+    width: 15%; 
+}
+
+.b-group-table th:nth-child(6) {
+    width: 25%;
+}
+.b-group-table th:nth-child(7) {
+    width: 7%; 
+}
+
+.c-group-table th:nth-child(1) {
+    width: 7%; 
+}
+
+.c-group-table th:nth-child(2) {
+    width: 10%;
+}
+.c-group-table th:nth-child(3) {
+    width: 16%; 
+}
+
+.c-group-table th:nth-child(4) {
+    width: 15%; 
+}
+
+.c-group-table th:nth-child(5) {
+    width: 25%;
+}
+.c-group-table th:nth-child(6) {
+    width: 7%; 
+}
+
+.slds-table th:nth-child(8) {
+    width: 13%; 
+}

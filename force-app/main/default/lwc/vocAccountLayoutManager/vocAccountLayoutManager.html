@@ -1,0 +1,30 @@
+<template>
+    <lightning-layout multiple-rows>
+        <!-- 검색인풋 -->
+        <!-- <lightning-layout-item padding="around-small" size="12" small-device-size="12" class="slds-var-p-around_small">
+            <c-voc-search input-type="all"></c-voc-search>
+        </lightning-layout-item> -->
+
+        <lightning-layout-item padding="around-small" size="3" small-device-size="12" medium-device-size="12" large-device-size="3" class="slds-var-p-horizontal_small">
+            <c-voc-account-table onaccountselect={handleAccountSelect}></c-voc-account-table>
+        </lightning-layout-item>
+
+        <lightning-layout-item padding="around-small" size="6" small-device-size="12" medium-device-size="12" large-device-size="6" class="slds-var-p-horizontal_small">
+            <c-voc-sales-table account-name={selectedAccount} onrefreshdata={handleRefresh}></c-voc-sales-table>
+        </lightning-layout-item>
+        
+        <lightning-layout-item padding="around-small" size="3" small-device-size="12" medium-device-size="12" large-device-size="3">
+            <c-voc-account-map account-name={selectedAccount}></c-voc-account-map>
+        </lightning-layout-item>
+        
+    </lightning-layout>
+</template>
+
+
+<!-- <lightning-layout-item padding="around-small" size="6" small-device-size="12" medium-device-size="6" class="slds-var-p-horizontal_small">
+    <c-voc-sales-table account-id={selectedAccountId}></c-voc-sales-table>
+</lightning-layout-item>
+
+<lightning-layout-item padding="around-small" size="3" small-device-size="12" medium-device-size="3">
+    <c-voc-account-map account-id={selectedAccountId}></c-voc-account-map>
+</lightning-layout-item> -->

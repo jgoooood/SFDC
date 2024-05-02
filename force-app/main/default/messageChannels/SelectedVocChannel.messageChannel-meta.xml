@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>선택된 VoC 레코드 Message Channel</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>This is the record Id for the selected VoC.</description>
+        <fieldName>recordId</fieldName>
+    </lightningMessageFields>
+    <masterLabel>SelectedVocChannel</masterLabel>
+</LightningMessageChannel>

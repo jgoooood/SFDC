@@ -1,0 +1,67 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item size="12">
+            <lightning-card title="판매점">
+                <lightning-button slot="actions" label="등록" variant="brand" onclick={openModal} style="padding: 10px;"></lightning-button>
+                <!-- <lightning-button slot="actions" label="삭제" variant="brand" onclick={deleteSelected} disabled={isDisabled}></lightning-button> -->
+                <!-- <template lwc:if={search}> -->
+                    <lightning-layout multiple-rows="true">
+                        <lightning-layout-item class="slds-var-p-around_small">
+                            <c-voc-search input-type="all" input-label="판매점명"></c-voc-search>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                <!-- </template> -->
+                <c-modal account={type} show-modal={isModalOpen} onclose={handleModalClose}></c-modal>
+                <div class="slds-scrollable slds-var-p-around_small">
+                    <table class="slds-table slds-table_bordered slds-table_col-bordered slds-table_cell-buffer">
+                    <!-- <table class="slds-table slds-table_bordered slds-max-medium-table_stacked"> -->
+                        <!-- <template> -->
+                            <thead>
+                                <tr class="slds-text-heading_label">
+                                    <!-- <th scope="col"><div class="slds-truncate">선택</div></th> -->
+                                    <template for:each={cols} for:item="col">
+                                        <th key={col.fieldName} scope="col" class={col.class}><span class="slds-truncate">{col.label}</span></th>
+                                    </template>
+                                </tr>
+                            </thead>
+                        <!-- </template> -->
+                        <!-- <template lwc:else>
+                            <thead class="c-group-table">
+                                <tr class="slds-text-heading_label">
+                                    <template for:each={cols} for:item="col">
+                                        <th key={col.fieldName} scope="col" class={col.class}><span class="slds-truncate">{col.label}</span></th>
+                                    </template>
+                                </tr>
+                            </thead>
+                        </template> -->
+                        
+                        <tbody lwc:if={accounts}>
+                            <template for:each={accounts} for:item="row" for:index="idx">
+                                <tr class="slds-hint-parent" key={row.Name} data-id={row.Name} onclick={onRowClick}>
+                                    <template if:true={userProfile}>
+                                        <td><input type="checkbox" name="selectedItem" data-id={row.Name} onchange={handleCheckboxChange}></td>
+                                    </template>
+                                    <td data-label="순위">{row.Rank}</td>
+                                    <td data-label="판매점">{row.Name}</td>
+                                    <td data-label="매출액" class="hightlight">{row.totalPrice}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                        <!-- <tbody lwc:if={accounts}>
+                            <template for:each={accounts} for:item="row" for:index="idx">
+                                <tr class="slds-hint-parent" key={row.Id} data-id={row.Id} onclick={onRowClick}>
+                                    <template if:true={userProfile}>
+                                        <td><input type="checkbox" name="selectedItem" data-id={row.Id} onchange={handleCheckboxChange}></td>
+                                    </template>
+                                    <td data-label="순위">{row.Rank}</td>
+                                    <td data-label="판매점">{row.Name}</td>
+                                    <td data-label="매출액">{row.totalPrice}</td>
+                                </tr>
+                            </template>
+                        </tbody> -->
+                    </table>
+                </div>
+            </lightning-card>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

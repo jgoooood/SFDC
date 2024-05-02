@@ -1,0 +1,56 @@
+<template>
+    <div class="slds-var-p-around_medium">
+        <lightning-record-edit-form object-api-name="VoC__c" onsubmit={submitHandler} onsuccess={successSaveHandler} onerror={handleError} record-id={recordId}>
+            <template if:true={recordId}>
+                <lightning-input-field field-name="ContactId__c" value={selectedContactId} readonly disabled></lightning-input-field>
+            </template>
+            <template if:false={recordId}>
+                <lightning-input-field field-name="ContactId__c" onchange={contactChangeHandler}></lightning-input-field>
+            </template>
+            <lightning-input-field field-name="VoC_Contact_Phone__c" value={contactPhone} readonly></lightning-input-field>
+            <lightning-combobox name="VoC_Product_Name__c"
+                                value={selectedProdName}
+                                label="보유제품"
+                                placeholder="보유한 제품을 선택해주세요"
+                                onchange={prodChangeHandler}
+                                options={productNames}
+                                required>
+            </lightning-combobox>
+            <lightning-input-field field-name="VoC_Type__c" value={vocType}></lightning-input-field>
+            <lightning-input-field field-name="VoC_Status__c" value={vocStatus}></lightning-input-field>
+            <lightning-input-field field-name="VoC_Subject__c" value={vocSubject}></lightning-input-field>
+            <lightning-input-field field-name="VoC_Description__c" value={vocDescription}></lightning-input-field>
+            <lightning-input-field field-name="VoC_Start_Date__c" value={vocStartDate}></lightning-input-field>
+            <div class="slds-text-align_center slds-var-m-top_medium">
+                <lightning-button 
+                    type="submit" variant="brand" label="저장">
+                </lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </div>
+</template>
+
+
+
+
+<!-- <template>
+    <div class="slds-var-p-around_medium">
+        <lightning-record-edit-form object-api-name="VoC__c" onsuccess={handleSuccess}>
+            <lightning-input-field field-name="ContactId__c" onchange={contactChangeHandler}></lightning-input-field>
+            <lightning-combobox name="VoC_Product__c"
+                                value={selectedProdCode}
+                                label="보유제품"
+                                placeholder="보유한 제품을 선택해주세요"
+                                onchange={prodChangeHandler}
+                                options={productCodes}
+                                required>
+            </lightning-combobox>
+            <lightning-input-field field-name="VoC_Type__c"></lightning-input-field>
+            <lightning-input-field field-name="VoC_Status__c"></lightning-input-field>
+            <lightning-input-field field-name="Name" required></lightning-input-field>
+            <lightning-input-field field-name="VoC_Description__c"></lightning-input-field>
+            <lightning-input-field field-name="VoC_Start_Date__c"></lightning-input-field>
+            <lightning-input-field field-name="VoC_End_Date__c"></lightning-input-field>
+        </lightning-record-edit-form>
+    </div>
+</template> -->

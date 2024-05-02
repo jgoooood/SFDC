@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="상담 정보 입력">
+        <div class="slds-var-p-around_medium">
+            <lightning-record-edit-form object-api-name="Case" onsuccess={successSaveHandler} onsubmit={handleSubmit}>
+                <lightning-input-field field-name="Type" onchange={typeHandler}></lightning-input-field>
+                <lightning-input-field field-name="ContactId"></lightning-input-field>
+                <lightning-input-field field-name="AccountId" value={accountId} onchange={accountIdHandler}></lightning-input-field>
+                <lightning-checkbox-group name="ProductSelection" 
+                                          label="상담 제품 선택" 
+                                          options={prodsOptions} 
+                                          value={selectedProducts} 
+                                          onchange={handleCheckboxChange}></lightning-checkbox-group>
+                
+                <lightning-input-field field-name="Subject"></lightning-input-field>
+                <lightning-input-field field-name="Description"></lightning-input-field>
+                <lightning-input-field field-name="Status"></lightning-input-field>
+                <lightning-input-field field-name="CreatedDate" hidden></lightning-input-field>
+
+                <lightning-button type="submit" variant="brand" label="저장"></lightning-button>
+            </lightning-record-edit-form>
+            
+        </div>
+    </lightning-card>
+</template>

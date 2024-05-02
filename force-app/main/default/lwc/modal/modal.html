@@ -1,0 +1,126 @@
+<template>
+    
+        <section class={modalClass} aria-modal="true" role="dialog">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <template lwc:if={voc}>
+                        <h2 class="slds-text-heading_medium">VoC 등록</h2>
+                    </template>
+                    <template lwc:elseif={myCase}>
+                        <h2 class="slds-text-heading_medium">상담 등록</h2>
+                    </template>
+                    <template lwc:elseif={sale}>
+                        <h2 class="slds-text-heading_medium">구매</h2>
+                    </template>
+                    <template lwc:elseif={contact}>
+                        <h2 class="slds-text-heading_medium">고객 등록</h2>
+                    </template>
+                    <template lwc:elseif={account}>
+                        <h2 class="slds-text-heading_medium">판매점 등록</h2>
+                    </template>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <template lwc:if={voc}>
+                        <c-voc-input-form onclose={closeModal}></c-voc-input-form>
+                    </template>
+                    <template lwc:elseif={myCase}>
+                        <c-case-input-form onclose={closeModal}></c-case-input-form>
+                    </template>
+                    <template lwc:elseif={sale}>
+                        <c-sales-input-form contact-id={contactId} account-id={accountId} products={products} onclose={closeModal} onrefresh={refreshHandler}></c-sales-input-form>
+                    </template>
+                    <template lwc:elseif={contact}>
+                        <c-contact-input-form onclose={closeModal}></c-contact-input-form>
+                    </template>
+                    <template lwc:elseif={account}>
+                        <c-account-input-form onclose={closeModal}></c-account-input-form>
+                    </template>
+                </div>
+            </div>
+        </section>
+        <div class={backdropClass}></div>
+
+    <!-- <template lwc:elseif={myCase}>
+        <section class={modalClass} aria-modal="true" role="dialog">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                    </button>
+                    
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <c-case-input-form contact-id={contactId} onclose={closeModal}></c-case-input-form>
+                </div>
+            </div>
+        </section>
+        <div class={backdropClass}></div>
+    </template>
+
+    <template lwc:elseif={sale}>
+        <section class={modalClass} aria-modal="true" role="dialog">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                    </button>
+                    <h2 class="slds-text-heading_medium">판매 등록</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <c-sales-input-form contact-id={contactId} onclose={closeModal}></c-sales-input-form>
+                </div>
+            </div>
+        </section>
+        <div class={backdropClass}></div>
+    </template>
+
+    <template lwc:elseif={contact}>
+        <section class={modalClass} aria-modal="true" role="dialog">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                    </button>
+                    <h2 class="slds-text-heading_medium">판매 등록</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <c-sales-input-form contact-id={contactId} onclose={closeModal}></c-sales-input-form>
+                </div>
+            </div>
+        </section>
+        <div class={backdropClass}></div>
+    </template> -->
+    
+</template> 
+
+<!-- 
+    footer 버튼 버전
+    <template>
+    <section class={modalClass} aria-modal="true" role="dialog">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 class="slds-text-heading_medium">VoC 등록</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium">
+                <c-voc-input-form 
+                    onclose={closeModal}
+                    onsavesuccess={successSaveHandler}>
+                </c-voc-input-form>
+            </div>
+            <footer class="slds-modal__footer slds-text-align_center">
+                <lightning-button 
+                    type="button" variant="brand" label="저장" onclick={handleSubmit}>
+                </lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class={backdropClass}></div>
+</template>  -->

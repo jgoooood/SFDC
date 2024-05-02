@@ -1,0 +1,26 @@
+.title {
+    border-bottom: 2px solid #000000; 
+    margin: 0px 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.slds-table {
+    width: 100%; 
+}
+
+.slds-table th:nth-child(1){
+    width: 15%; 
+}
+.slds-table th:nth-child(2){
+    width: 25%; 
+}
+.slds-table th:nth-child(3){
+    width: 10%; 
+}
+.slds-table th:nth-child(4){
+    width: 25%; 
+}
+.slds-table th:nth-child(5){
+    width: 25%; 
+}

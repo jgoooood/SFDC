@@ -1,0 +1,48 @@
+.slds-table {
+    width: 100%; 
+}
+
+.slds-table th{
+    height: 30px;
+    font-weight: bold;
+}
+
+/* c그룹 테이블 컬럼 */
+.slds-table th:nth-child(1) {
+    width: 20%; 
+}
+
+.slds-table th:nth-child(2) {
+    width: 50%; 
+}
+
+.slds-table th:nth-child(3) {
+    width: 30%;
+    background-color: rgb(220, 243, 250);
+    font-weight: bold;
+}
+
+
+/* c그룹 제외 테이블 컬럼 */
+/* .b-group-table th:nth-child(1) {
+    width: 15%; 
+}
+
+.b-group-table th:nth-child(2) {
+    width: 15%; 
+}
+
+.b-group-table th:nth-child(3) {
+    width: 40%;
+}
+
+.b-group-table th:nth-child(4) {
+    width: 30%;
+    background-color: rgb(220, 243, 250);
+    font-weight: bold;
+} */
+
+.hightlight {
+    background-color: rgb(220, 243, 250);
+    font-weight: bold;
+}

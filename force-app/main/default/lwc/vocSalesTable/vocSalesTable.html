@@ -1,0 +1,66 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item size="12">
+            <lightning-card title="노트북 판매내역">
+                <!-- <lightning-button slot="actions" label="검색" variant="brand" onclick={searchHandler} style="padding: 10px;"></lightning-button> -->
+                <lightning-button slot="actions" label="초기화" variant="brand" onclick={resetHandler}></lightning-button>
+                <!-- <template lwc:if={search}> -->
+                    <lightning-layout multiple-rows="true">
+                        <lightning-layout-item size="4" class="slds-var-p-around_small">
+                            <lightning-combobox name="Name__c"
+                                placeholder="조회할 제품을 선택해주세요"
+                                onchange={handleProductNameChange}
+                                value={searchProd}
+                                options={notebookOptions}>
+                            </lightning-combobox>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4" class="slds-var-p-around_small">
+                            <lightning-input type="date" placeholder="판매 날짜 (시작일)" value={startDate} name="startDate" onchange={handleStartDateChange}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4" class="slds-var-p-around_small">
+                            <lightning-input type="date" placeholder="판매 날짜 (종료일)" value={endDate} name="endDate" onchange={handleEndDateChange}></lightning-input>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                <!-- </template> -->
+                <div class="slds-scrollable slds-table_cell-buffer slds-var-p-around_small">
+                    <table class="slds-table slds-table_bordered slds-table_col-bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-text-heading_label">
+                                <template for:each={cols} for:item="col">
+                                    <th key={col.fieldName} scope="col" class={col.class}><span class="slds-truncate">{col.label}</span></th>
+                                </template>
+                            </tr>
+                        </thead>
+                        <tbody if:true={sales}>
+                            <template for:each={sales} for:item="row" for:index="idx">
+                                <tr class="slds-hint-parent" key={row.Id} data-id={row.Id}>
+                                    <td data-label="위치">{row.Account}</td>
+                                    <td data-label="상태">{row.status__c}</td>
+                                    <td data-label="날짜">{row.Sales_Date__c}</td>
+                                    <td data-label="고객">{row.Contact}</td>
+                                    <td data-label="제품">{row.Product_Name__c}</td>
+                                    <td data-label="단가">{row.ProductPrice}</td>
+                                    <td data-label="수량">{row.Product_Quantity__c}</td>
+                                    <td data-label="판매액">{row.Price__c}</td>
+                                    <td data-label="할인율">{row.Discount__c}</td>
+                                    <!-- <td data-label="할인액"></td> -->
+                                    <!-- <td data-label="순매출액"></td> -->
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    <template if:true={noData}>
+                        <div class="slds-text-align_center slds-var-p-around_small" style="margin-top: 10px;">
+                            <b>판매내역이 존재하지 않습니다.</b>
+                        </div>
+                    </template>
+                </div>
+            </lightning-card>
+        </lightning-layout-item>
+        <!-- 페이지 컴포넌트추가 -->
+        <lightning-layout-item class="slds-align_absolute-center" lwc:if={totalPages}>
+            <c-pagination current-page={currentPage} total-pages={totalPages} onnavigate={handleNavigation}></c-pagination>
+        </lightning-layout-item>
+
+    </lightning-layout>
+</template>

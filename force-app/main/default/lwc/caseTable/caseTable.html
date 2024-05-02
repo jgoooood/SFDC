@@ -1,0 +1,45 @@
+<template>
+    <lightning-layout multiple-rows="true" class="slds-grid slds-align-top">
+        <lightning-layout-item size="12">
+            <lightning-card>
+                <div class="title">상담 내역</div>
+                <template if:true={userProfile}>
+                    <lightning-button slot="actions" label="등록" variant="brand" onclick={openModal}></lightning-button>
+                </template>
+                <c-modal my-case={type} show-modal={isModalOpen} onclose={handleModalClose}></c-modal>
+                    <div class="slds-scrollable scrollerSize">
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+                            <thead>
+                                <tr>
+                                    <th>유형</th>
+                                    <th>상담번호</th>
+                                    <th>고객</th>
+                                    <th>제목</th>
+                                    <th>작성일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={caseList} for:item="mycase">
+                                    <tr key={mycase.Id} onclick={caseDetailHandler} data-id={mycase.Id}>
+                                        <td>{mycase.Type}</td>
+                                        <td>{mycase.Id}</td>
+                                        <template lwc:if={mycase.Contact}>
+                                            <td>{mycase.Contact.Name}</td>
+                                        </template>
+                                        <template lwc:else>
+                                            <td></td>
+                                        </template>
+                                        <td>{mycase.Subject}</td>
+                                        <td>{mycase.CreatedDate}</td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+            </lightning-card>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-align_absolute-center" lwc:if={totalPages}>
+            <c-pagination current-page={currentPage} total-pages={totalPages} onnavigate={handleNavigation}></c-pagination>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

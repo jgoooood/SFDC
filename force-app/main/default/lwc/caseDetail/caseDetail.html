@@ -1,0 +1,38 @@
+<template>
+    <lightning-card>
+        <template lwc:if={caseId}>
+            <template lwc:if={viewMode}>
+                <template if:true={userProfile}>
+                    <lightning-button slot="actions" label="수정" variant="brand" class="update-btn" onclick={changeUpdateModeHandler}></lightning-button>
+                    <lightning-button slot="actions" label="삭제" onclick={deleteHandler}></lightning-button>
+                </template>
+                <div class="slds-var-p-around_medium">
+                    <div class="title">상담 정보</div>
+                        <lightning-record-view-form record-id={caseId} object-api-name="Case">
+                            <lightning-output-field field-name="Type"></lightning-output-field>
+                            <lightning-output-field field-name="ContactId"></lightning-output-field>
+                            <lightning-output-field field-name="Case_Item__c"></lightning-output-field>
+                            <lightning-output-field field-name="Subject"></lightning-output-field>
+                            <lightning-output-field field-name="Description"></lightning-output-field>
+                        </lightning-record-view-form>
+                </div>
+            </template>
+            <template lwc:elseif={updateMode}>
+                <div class="slds-var-p-around_medium">
+                    <div class="title">상담 정보 수정</div>
+                    <lightning-record-edit-form record-id={caseId} object-api-name="Case" onsuccess={successUpdateHandler}>
+                        <lightning-input-field field-name="Type"></lightning-input-field>
+                        <lightning-input-field field-name="ContactId"></lightning-input-field>
+                        <lightning-input-field field-name="Case_Item__c"></lightning-input-field>
+                        <lightning-input-field field-name="Subject"></lightning-input-field>
+                        <lightning-input-field field-name="Description"></lightning-input-field>
+                        <lightning-button-group>
+                            <lightning-button type="submit" label="저장" variant="brand" class="save-btn"></lightning-button>
+                            <lightning-button type="cancel" label="취소" onclick={cancelHandler}></lightning-button>
+                        </lightning-button-group>
+                    </lightning-record-edit-form>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>

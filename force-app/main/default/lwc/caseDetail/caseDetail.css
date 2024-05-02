@@ -1,0 +1,14 @@
+.title {
+    border-bottom: 2px solid #000000; 
+    margin: 0px 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.update-btn {
+    margin-right: 10px;
+}
+
+.save-btn {
+    margin-right: 10px;
+}

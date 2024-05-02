@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="판매점 정보">
+		<div if:true={accountId}>
+			<div if:true={accountId}>
+				<lightning-record-view-form record-id={accountId} object-api-name="Account">
+					<lightning-output-field field-name="Name"></lightning-output-field>
+					<lightning-output-field field-name="OwnerId"></lightning-output-field>
+					<lightning-output-field field-name="Location__c"></lightning-output-field>
+					<lightning-output-field field-name="Phone"></lightning-output-field>
+					<lightning-output-field field-name="BillingAddress"></lightning-output-field>
+				</lightning-record-view-form>
+			</div>
+			<div>
+				<lightning-map map-markers={mapMarkers} zoom-level="12"></lightning-map>
+			</div>
+		</div>
+
+		<div class="slds-var-p-around_small slds-text-align_center" if:false={accountId}>
+			<b>판매점을 선택해주세요. </b>
+		</div>
+    </lightning-card>
+</template>

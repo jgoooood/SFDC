@@ -1,0 +1,36 @@
+.slds-table {
+    width: 100%; 
+}
+
+.slds-table th{
+    height: 30px;
+    font-weight: bold;
+}
+
+.slds-table th:nth-child(1){
+    width: 20%; 
+}
+.slds-table th:nth-child(2){
+    width: 5%; 
+}
+.slds-table th:nth-child(3){
+    width: 15%; 
+}
+.slds-table th:nth-child(4){
+    width: 10%; 
+}
+.slds-table th:nth-child(5){
+    width: 15%; 
+}
+.slds-table th:nth-child(6){
+    width: 10%; 
+}
+.slds-table th:nth-child(7){
+    width: 7%; 
+}
+.slds-table th:nth-child(8){
+    width: 10%; 
+}
+.slds-table th:nth-child(9){
+    width: 8%; 
+}

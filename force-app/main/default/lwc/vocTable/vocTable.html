@@ -1,0 +1,79 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item size="12">
+            <lightning-card title="VoC 내역 조회">
+                <c-voc-search input-type="number"></c-voc-search>
+                <template if:true={userProfile}>
+                    <lightning-button slot="actions" label="등록" variant="brand" onclick={openModal} style="padding: 10px;"></lightning-button>
+                    <lightning-button slot="actions" label="삭제" variant="destructive" onclick={deleteSelected} disabled={isDisabled}></lightning-button>
+                </template>
+                <c-modal voc={type} show-modal={isModalOpen} onclose={handleModalClose}></c-modal>
+                <div class="slds-scrollable slds-table_cell-buffer slds-var-p-vertical_small">
+                    <table class="slds-table slds-table_bordered slds-table_col-bordered">
+                    <!-- <table class="slds-table slds-table_bordered slds-max-medium-table_stacked"> -->
+                        <template lwc:if={userProfile}>
+                            <thead class="b-group-table">
+                                <tr class="slds-text-heading_label">
+                                    <th scope="col"><div class="slds-truncate">선택</div></th>
+                                    <template for:each={cols} for:item="col">
+                                        <th key={col.fieldName} scope="col" class={col.class}><span class="slds-truncate">{col.label}</span></th>
+                                    </template>
+                                </tr>
+                            </thead>
+                        </template>
+                       
+                        <template lwc:else>
+                            <thead class="c-group-table">
+                                <tr class="slds-text-heading_label">
+                                    <template for:each={cols} for:item="col">
+                                        <th key={col.fieldName} scope="col" class={col.class}><span class="slds-truncate">{col.label}</span></th>
+                                    </template>
+                                </tr>
+                            </thead>
+                        </template>
+                        <tbody lwc:if={VoC}>
+                            <template for:each={VoC} for:item="row" for:index="idx">
+                                <tr class="slds-hint-parent" key={row.Id} data-id={row.Id} onclick={onRowClick}>
+                                    <template if:true={userProfile}>
+                                        <td><input type="checkbox" name="selectedItem" data-id={row.Id} onchange={handleCheckboxChange}></td>
+                                    </template>
+                                    <td data-label="유형">{row.VoC_Type__c}</td>
+                                    <td data-label="고객">{row.ContactId}</td>
+                                    <td data-label="고객연락처">{row.VoC_Contact_Phone__c}</td>
+                                    <td data-label="제품">{row.VoC_Product_Name__c}</td>
+                                    <td data-label="제목">{row.VoC_Subject__c}</td>
+                                    <td data-label="상태">{row.VoC_Status__c}</td>
+                                    <td data-label="작성일">{row.VoC_Start_Date__c}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-card>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-align_absolute-center">
+            <c-pagination current-page={currentPage} total-pages={totalPages} onnavigate={handleNavigation}></c-pagination>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
+
+
+
+<!-- <template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item>
+            <lightning-card title="VoC 내역 조회">
+                <lightning-button slot="actions" label="등록" variant="brand" onclick={openModal}></lightning-button>
+                <c-modal show-modal={isModalOpen} onclose={handleModalClose}></c-modal>
+                <div class="slds-scrollable scrollerSize">
+                    <lightning-datatable
+                        key-field="Id"
+                        data= {VoC}
+                        columns={cols}
+                        onrowaction={handleRowSelection}>
+                    </lightning-datatable>
+                </div>
+            </lightning-card>
+        </lightning-layout-item>
+    </lightning-layout>
+</template> -->
